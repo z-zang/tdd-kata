@@ -10,4 +10,15 @@ describe('numToRom', () => {
         expect(numToRom(500)).toBe('D')
         expect(numToRom(1000)).toBe('M')
     })
+    test('converts input for multiples of 1000', () => {
+        expect(numToRom(4000)).toBe('MMMM')
+        expect(numToRom(3000)).toBe('MMM')
+        expect(numToRom(2000)).toBe('MM')
+    })
+    test.only('converts input for larger numbers', () => {
+        // expect(numToRom(5554)).toBe('I')
+        // expect(numToRom(1000)).toBe('I')
+
+    })
+
 })
