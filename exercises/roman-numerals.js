@@ -1,27 +1,36 @@
-export const numToRom = (number) => {
-    let numeralArray = [];
+export const numToRom = (numberToConvert) => {
+    // Different sequential letter combinations:
+    /*
+        M, CM, D, CD, C, XC, L, XL, X, IX, V, IV, I
+        1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1
+    */
 
-    // M, 1000
-    if (number >= 1000) {
-        const quotient = Math.floor(number / 1000)
-        const remainder = number % 1000
-        
-        if (quotient >= 1) {
-            numeralArray.push(...Array(quotient).fill("M"))
-        }
-        
-        console.log('quotient', quotient)
-        console.log('remainder', remainder)
+    const romNumMap = {
+        M: 1000,
+        CM: 900,
+        D: 500,
+        CD: 400,
+        C: 100,
+        XC: 90,
+        L: 50,
+        XL: 40,
+        X: 10,
+        IX: 9,
+        V: 5,
+        IV: 4, 
+        I: 1
     }
-    
-    if (number === 500) return 'D'
-    if (number === 100) return 'C'
-    if (number === 50) return 'L'
-    if (number === 10) return 'X'
-    if (number === 5) return 'V'
-    if (number === 1) return 'I'
 
-    // console.log('numeralArray', numeralArray)
+    let finalNumeralString = '';
 
-    return numeralArray.join('')
+    Object.keys(romNumMap).forEach((romNum) => {
+        let quotient = Math.floor(numberToConvert / romNumMap[romNum]);
+        
+        // remove amount now represented by letters
+        numberToConvert -= quotient * romNumMap[romNum];
+        // and letters to final string
+        finalNumeralString += romNum.repeat(quotient);
+    })
+
+    return finalNumeralString;
 }

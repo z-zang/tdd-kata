@@ -15,10 +15,12 @@ describe('numToRom', () => {
         expect(numToRom(3000)).toBe('MMM')
         expect(numToRom(2000)).toBe('MM')
     })
-    test.only('converts input for larger numbers', () => {
-        // expect(numToRom(5554)).toBe('I')
-        // expect(numToRom(1000)).toBe('I')
-
+    test('converts input for other numbers', () => {
+        expect(numToRom(5554)).toBe('MMMMMDLIV')
+        expect(numToRom(1000)).toBe('M')
+        expect(numToRom(748)).toBe('DCCXLVIII')
+        expect(numToRom(39)).toBe('XXXIX')
+        expect(numToRom(83)).toBe('LXXXIII')
+        expect(numToRom(7)).toBe('VII')
     })
-
 })
